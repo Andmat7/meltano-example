@@ -1,0 +1,17 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: 7e92625e-e85c-4e88-9a33-15f9c86b6797
+plugins:
+  extractors:
+  - name: tap-gitlab
+    variant: meltano
+    pip_url: git+https://gitlab.com/meltano/tap-gitlab.git
+    config:
+      start_date: '2020-05-01T00:00:00Z'
+      projects: meltano/meltano
+    select:
+    - tags.*
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
